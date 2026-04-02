@@ -144,6 +144,103 @@
       .member-photo img { aspect-ratio: 4/3; object-position: center 20%; }
     }
 
+    /* ── Slider ── */
+    .production-slider {
+      margin-top: 1.8rem;
+      margin-bottom: .2rem;
+    }
+
+    .slider-track-wrap {
+      position: relative;
+      overflow: hidden;
+      margin-top: .75rem;
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform .35s ease;
+    }
+
+    .slider-track img {
+      flex: 0 0 100%;
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,.75);
+      border: none;
+      width: 2.4rem;
+      height: 2.4rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s;
+    }
+
+    .slider-btn:hover { background: #fff; }
+    .slider-btn.prev  { left: .6rem; }
+    .slider-btn.next  { right: .6rem; }
+
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: .45rem;
+      margin-top: .7rem;
+    }
+
+    .slider-dot {
+      width: .45rem;
+      height: .45rem;
+      border-radius: 50%;
+      background: #ccc;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background .2s;
+    }
+
+    .slider-dot.active { background: #1a1a1a; }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.88);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+      background: none;
+      border: none;
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -219,6 +316,24 @@
     </div>
   </div>
 
+  <div class="production-slider">
+    <div class="bio-label">Ілюстрації — «Русалонька» (2024)</div>
+    <div class="slider-track-wrap" id="sliderWrap">
+      <div class="slider-track" id="sliderTrack">
+        <img src="Mermaid_1.jpg" alt="Русалонька — сцена 1" />
+        <img src="Mermaid_2.jpg" alt="Русалонька — сцена 2" />
+        <img src="Mermaid_3.jpg" alt="Русалонька — сцена 3" />
+      </div>
+      <button class="slider-btn prev" id="sliderPrev">&#8592;</button>
+      <button class="slider-btn next" id="sliderNext">&#8594;</button>
+    </div>
+    <div class="slider-dots" id="sliderDots">
+      <button class="slider-dot active"></button>
+      <button class="slider-dot"></button>
+      <button class="slider-dot"></button>
+    </div>
+  </div>
+
   <div class="bio-section">
     <div class="bio-label">Освіта</div>
     <p class="bio-text">У 2018 р. закінчив Національну музичну академію України ім. П. І. Чайковського (спеціальність «Музична режисура»). З 2015 р. — співзасновник мистецького об'єднання HRONOTOP.UA.</p>
@@ -276,6 +391,11 @@
   </div>
 </section>
 
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close">&times;</button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
 <footer>Львів</footer>
 
 <script>
@@ -291,6 +411,37 @@
       document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
     });
   });
+
+  // Slider
+  const track  = document.getElementById('sliderTrack');
+  const dots   = document.querySelectorAll('.slider-dot');
+  const slides = track.querySelectorAll('img');
+  let current  = 0;
+
+  function goTo(n) {
+    current = (n + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  document.getElementById('sliderPrev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('sliderNext').addEventListener('click', () => goTo(current + 1));
+  dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+
+  // Lightbox on slide click
+  const lightbox    = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  slides.forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('open');
+    });
+  });
+
+  document.getElementById('lightbox-close').addEventListener('click', () => lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
 </script>
 
 </body>
