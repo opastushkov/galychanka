@@ -183,14 +183,16 @@
       transition: transform .35s ease;
     }
 
-    .slider-track img {
+    .slider-track img,
+    .slider-track video {
       flex: 0 0 100%;
       width: 100%;
       aspect-ratio: 4/5;
       object-fit: cover;
       display: block;
-      cursor: pointer;
     }
+
+    .slider-track img { cursor: pointer; }
 
     .slider-btn {
       position: absolute;
@@ -290,39 +292,57 @@
 
 <!-- ── Panel: Юрій Бервецький ── -->
 <section class="tab-panel active" id="tab-yuriy" role="tabpanel">
-  <div class="member-header" style="border-top:2px solid #1a1a1a;padding-top:2rem;">
-    <div class="member-photo">
-      <img src="https://opera.lviv.ua/wp-content/uploads/2020/08/IVA_2211-681x1024.jpg" alt="Юрій Бервецький" />
-    </div>
-    <div class="member-info">
+  <div class="magazine-layout">
+
+    <div class="magazine-left">
+      <div class="member-photo">
+        <img src="yuriy.jpg" alt="Юрій Бервецький" />
+      </div>
       <h2 class="member-name">Юрій Бервецький</h2>
       <div class="member-role">Музичний керівник та диригент</div>
+
+      <div class="bio-section">
+        <div class="bio-label">Нагороди</div>
+        <p class="bio-text">Заслужений артист України (2017). Грамота Верховної Ради України (2020). Медаль Міністерства культури України (2014).</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Освіта</div>
+        <p class="bio-text">Брав приватні уроки у Миколи Колесси та Іллі Мусіна — видатних представників радянської та української диригентської школи.</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Оперна та балетна діяльність</div>
+        <p class="bio-text">З 2003 р. — диригент Львівського національного академічного театру опери та балету ім. С. Крушельницької. Постановки: «Дон Жуан», «Весілля Фігаро» Моцарта, «Дон Кіхот» Мінкуса, «Корсар» Адана, «Мавка» Польової та ін.</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Педагогічна діяльність</div>
+        <p class="bio-text">З 2005 р. — завідувач кафедри оперної підготовки та головний диригент Оперної студії Львівської національної музичної академії ім. М. Лисенка. Виконано всі скрипкові концерти М. Скорика.</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Міжнародна діяльність</div>
+        <p class="bio-text">Teatro Verdi (Трієст, 2019–2026), Варшавська філармонія, Concertgebouw (Амстердам). Запрошений диригент Міжнародного конкурсу ім. Р. Ліпіцера та конкурсу ім. М. Скорика. Виступав у Франції, Польщі, Словаччині, Чехії, Угорщині, Німеччині, Іспанії, Португалії, Бельгії, Нідерландах, Норвегії.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="bio-section">
-    <div class="bio-label">Нагороди</div>
-    <p class="bio-text">Заслужений артист України (2017). Грамота Верховної Ради України (2020). Медаль Міністерства культури України (2014).</p>
-  </div>
+    <div class="magazine-right">
+      <div class="slider-track-wrap" id="sliderWrapYuriy">
+        <div class="slider-track" id="sliderTrackYuriy">
+          <img src="Harmony_Of_Spheres_1.jpg" alt="Гармонія сфер — сцена 1" />
+          <img src="Harmony_Of_Spheres_2.jpg" alt="Гармонія сфер — сцена 2" />
+        </div>
+        <button class="slider-btn prev" id="sliderPrevYuriy">&#8592;</button>
+        <button class="slider-btn next" id="sliderNextYuriy">&#8594;</button>
+      </div>
+      <div class="slider-dots" id="sliderDotsYuriy">
+        <button class="slider-dot active"></button>
+        <button class="slider-dot"></button>
+      </div>
+      <div class="bio-label" style="margin-top:.7rem;text-align:center;">«Гармонія сфер» — мультимедійний перформанс, 2023</div>
+    </div>
 
-  <div class="bio-section">
-    <div class="bio-label">Освіта</div>
-    <p class="bio-text">Брав приватні уроки у Миколи Колесси та Іллі Мусіна — видатних представників радянської та української диригентської школи.</p>
-  </div>
-
-  <div class="bio-section">
-    <div class="bio-label">Оперна та балетна діяльність</div>
-    <p class="bio-text">З 2003 р. — диригент Львівського національного академічного театру опери та балету ім. С. Крушельницької. Постановки: «Дон Жуан», «Весілля Фігаро» Моцарта, «Дон Кіхот» Мінкуса, «Корсар» Адана, «Мавка» Польової та ін.</p>
-  </div>
-
-  <div class="bio-section">
-    <div class="bio-label">Педагогічна діяльність</div>
-    <p class="bio-text">З 2005 р. — завідувач кафедри оперної підготовки та головний диригент Оперної студії Львівської національної музичної академії ім. М. Лисенка. Виконано всі скрипкові концерти М. Скорика.</p>
-  </div>
-
-  <div class="bio-section">
-    <div class="bio-label">Міжнародна діяльність</div>
-    <p class="bio-text">Teatro Verdi (Трієст, 2019–2026), Варшавська філармонія, Concertgebouw (Амстердам). Запрошений диригент Міжнародного конкурсу ім. Р. Ліпіцера та конкурсу ім. М. Скорика. Виступав у Франції, Польщі, Словаччині, Чехії, Угорщині, Німеччині, Іспанії, Португалії, Бельгії, Нідерландах, Норвегії.</p>
   </div>
 </section>
 
@@ -381,37 +401,52 @@
 
 <!-- ── Panel: Романа Думанська ── -->
 <section class="tab-panel" id="tab-romana" role="tabpanel">
-  <div class="member-header" style="border-top:2px solid #1a1a1a;padding-top:2rem;">
-    <div class="member-photo">
-      <img src="https://opera.lviv.ua/wp-content/uploads/2023/10/DSC_8491-scaled.jpg" alt="Романа Думанська" />
-    </div>
-    <div class="member-info">
+  <div class="magazine-layout">
+
+    <div class="magazine-left">
+      <div class="member-photo">
+        <img src="romana.jpg" alt="Романа Думанська" />
+      </div>
       <h2 class="member-name">Романа Думанська</h2>
       <div class="member-role">Хореограф-постановник</div>
+
+      <div class="bio-section">
+        <div class="bio-label">Освіта</div>
+        <p class="bio-text">Випускниця з відзнакою Львівської державної хореографічної школи. Магістр хореографії Дрогобицького державного педагогічного університету ім. І. Франка.</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Артистична діяльність</div>
+        <p class="bio-text">З 2016 р. — артистка балету Львівської національної опери. Партії: Палагна («Тіні забутих предків»), Відьма («Білосніжка»), Килина («Мавка»), варіація Флори («Дон Кіхот») та ін.</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Хореографічна діяльність</div>
+        <p class="bio-text">Хореограф-постановник номеру «Діти війни» (музика В. Польової) на фестивалі «Резиденція класичного танцю ім. Роми Прийми-Богачевської». Дипломантка конкурсів Spoleto та NapoliDOC (Італія).</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Гастролі та нагороди</div>
+        <p class="bio-text">Іспанія, Італія, США, Канада, Тайвань, Саудівська Аравія, Німеччина, Польща, Португалія. Відзначена подякою Львівської міської ради за мистецьку діяльність (2026).</p>
+      </div>
     </div>
-  </div>
 
-  <div class="bio-section">
-    <div class="bio-label">Освіта</div>
-    <p class="bio-text">Випускниця з відзнакою Львівської державної хореографічної школи. Магістр хореографії Дрогобицького державного педагогічного університету ім. І. Франка.</p>
-  </div>
+    <div class="magazine-right">
+      <div class="slider-track-wrap" id="sliderTrackWrapRomana">
+        <div class="slider-track" id="sliderTrackRomana">
+          <video controls>
+            <source src="Children_Of_War_compressed.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <button class="slider-btn prev" id="sliderPrevRomana">&#8592;</button>
+        <button class="slider-btn next" id="sliderNextRomana">&#8594;</button>
+      </div>
+      <div class="slider-dots" id="sliderDotsRomana">
+        <button class="slider-dot active"></button>
+      </div>
+      <div class="bio-label" style="margin-top:.7rem;text-align:center;">«Діти війни»</div>
+    </div>
 
-  <div class="bio-section">
-    <div class="bio-label">Артистична діяльність</div>
-    <p class="bio-text">З 2016 р. — артистка балету Львівської національної опери. Партії: Палагна («Тіні забутих предків»), Відьма («Білосніжка»), Килина («Мавка»), варіація Флори («Дон Кіхот») та ін.</p>
-  </div>
-
-  <div class="bio-section">
-    <div class="bio-label">Хореографічна діяльність</div>
-    <p class="bio-text">Хореограф-постановник номеру «Діти війни» (музика В. Польової) на фестивалі «Резиденція класичного танцю ім. Роми Прийми-Богачевської». Дипломантка конкурсів Spoleto та NapoliDOC (Італія).</p>
-    <video controls style="width:50%;margin:1rem auto 0;display:block;">
-      <source src="Children_Of_War_compressed.mp4" type="video/mp4" />
-    </video>
-  </div>
-
-  <div class="bio-section">
-    <div class="bio-label">Гастролі та нагороди</div>
-    <p class="bio-text">Іспанія, Італія, США, Канада, Тайвань, Саудівська Аравія, Німеччина, Польща, Португалія. Відзначена подякою Львівської міської ради за мистецьку діяльність (2026).</p>
   </div>
 </section>
 
@@ -436,36 +471,47 @@
     });
   });
 
-  // Slider
-  const track  = document.getElementById('sliderTrack');
-  const dots   = document.querySelectorAll('.slider-dot');
-  const slides = track.querySelectorAll('img');
-  let current  = 0;
-
-  function goTo(n) {
-    current = (n + slides.length) % slides.length;
-    track.style.transform = `translateX(-${current * 100}%)`;
-    dots.forEach((d, i) => d.classList.toggle('active', i === current));
-  }
-
-  document.getElementById('sliderPrev').addEventListener('click', () => goTo(current - 1));
-  document.getElementById('sliderNext').addEventListener('click', () => goTo(current + 1));
-  dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
-
-  // Lightbox on slide click
+  // Lightbox
   const lightbox    = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
 
-  slides.forEach(img => {
-    img.addEventListener('click', () => {
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      lightbox.classList.add('open');
-    });
-  });
-
   document.getElementById('lightbox-close').addEventListener('click', () => lightbox.classList.remove('open'));
   lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
+
+  function initSlider(trackId, prevId, nextId, dotsContainerId) {
+    const track  = document.getElementById(trackId);
+    const slides = Array.from(track.querySelectorAll('img, video'));
+    const dots   = Array.from(document.getElementById(dotsContainerId).querySelectorAll('.slider-dot'));
+    let current  = 0;
+
+    function goTo(n) {
+      // pause any playing video before leaving
+      const leaving = slides[current];
+      if (leaving && leaving.tagName === 'VIDEO') leaving.pause();
+
+      current = (n + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    document.getElementById(prevId).addEventListener('click', () => goTo(current - 1));
+    document.getElementById(nextId).addEventListener('click', () => goTo(current + 1));
+    dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+
+    slides.forEach(img => {
+      if (img.tagName === 'IMG') {
+        img.addEventListener('click', () => {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightbox.classList.add('open');
+        });
+      }
+    });
+  }
+
+  initSlider('sliderTrack',       'sliderPrev',       'sliderNext',       'sliderDots');
+  initSlider('sliderTrackYuriy',  'sliderPrevYuriy',  'sliderNextYuriy',  'sliderDotsYuriy');
+  initSlider('sliderTrackRomana', 'sliderPrevRomana', 'sliderNextRomana', 'sliderDotsRomana');
 </script>
 
 </body>
