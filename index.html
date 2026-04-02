@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Мистецький колектив</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Georgia, serif;
+      background: #f5f2ee;
+      color: #1a1a1a;
+      line-height: 1.75;
+    }
+
+    header {
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #555;
+    }
+
+    /* ── Tabs ── */
+    .tabs-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 0;
+    }
+
+    .tab-list {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid #1a1a1a;
+      list-style: none;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: .75rem 1.6rem;
+      font-family: Georgia, serif;
+      font-size: .85rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #999;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: color .2s;
+    }
+
+    .tab-btn:hover { color: #1a1a1a; }
+
+    .tab-btn.active {
+      color: #1a1a1a;
+      border-bottom-color: #1a1a1a;
+    }
+
+    /* ── Panels ── */
+    .tab-panel {
+      display: none;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 5rem;
+    }
+
+    .tab-panel.active { display: block; }
+
+    /* Fade-in when switching */
+    .tab-panel.active {
+      animation: fadein .25s ease;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* ── Member content ── */
+    .member-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-bottom: 1.8rem;
+      border-top: 2px solid #1a1a1a;
+      padding-top: 2rem;
+    }
+
+    .member-photo {
+      width: 140px;
+      flex-shrink: 0;
+    }
+
+    .member-photo img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      filter: grayscale(20%);
+    }
+
+    .member-info { flex: 1; }
+
+    .member-name {
+      font-size: 1.6rem;
+      font-weight: 400;
+    }
+
+    .member-role {
+      font-size: .82rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #888;
+      margin-top: .3rem;
+    }
+
+    .bio-section { margin-top: 1.4rem; }
+
+    .bio-label {
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: .35rem;
+    }
+
+    .bio-text {
+      font-size: .95rem;
+      color: #333;
+    }
+
+    @media (max-width: 520px) {
+      .member-header { flex-direction: column; }
+      .member-photo { width: 100%; }
+      .member-photo img { aspect-ratio: 4/3; object-position: center 20%; }
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #ddd;
+      font-size: .78rem;
+      color: #aaa;
+      letter-spacing: .1em;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Мистецький колектив &nbsp;·&nbsp; Львів</h1>
+</header>
+
+<!-- Tab buttons -->
+<div class="tabs-wrapper">
+  <ul class="tab-list" role="tablist">
+    <li><button class="tab-btn active" role="tab" data-tab="yuriy">Юрій Бервецький</button></li>
+    <li><button class="tab-btn"        role="tab" data-tab="anton">Антон Литвинов</button></li>
+    <li><button class="tab-btn"        role="tab" data-tab="romana">Романа Думанська</button></li>
+  </ul>
+</div>
+
+<!-- ── Panel: Юрій Бервецький ── -->
+<section class="tab-panel active" id="tab-yuriy" role="tabpanel">
+  <div class="member-header">
+    <div class="member-photo">
+      <img src="https://opera.lviv.ua/wp-content/uploads/2020/08/IVA_2211-681x1024.jpg" alt="Юрій Бервецький" />
+    </div>
+    <div class="member-info">
+      <h2 class="member-name">Юрій Бервецький</h2>
+      <div class="member-role">Музичний керівник та диригент</div>
+    </div>
+  </div>
+
+  <div class="bio-section">
+    <div class="bio-label">Нагороди</div>
+    <p class="bio-text">Заслужений артист України (2017). Грамота Верховної Ради України (2020). Медаль Міністерства культури України (2014).</p>
+  </div>
+
+  <div class="bio-section">
+    <div class="bio-label">Освіта</div>
+    <p class="bio-text">Брав приватні уроки у Миколи Колесси та Іллі Мусіна — видатних представників радянської та української диригентської школи.</p>
+  </div>
+
+  <div class="bio-section">
+    <div class="bio-label">Оперна та балетна діяльність</div>
+    <p class="bio-text">З 2003 р. — диригент Львівського національного академічного театру опери та балету ім. С. Крушельницької. Постановки: «Дон Жуан», «Весілля Фігаро» Моцарта, «Дон Кіхот» Мінкуса, «Корсар» Адана, «Мавка» Польової та ін.</p>
+  </div>
+
+  <div class="bio-section">
+    <div class="bio-label">Педагогічна діяльність</div>
+    <p class="bio-text">З 2005 р. — завідувач кафедри оперної підготовки та головний диригент Оперної студії Львівської національної музичної академії ім. М. Лисенка. Виконано всі скрипкові концерти М. Скорика.</p>
+  </div>
+
+  <div class="bio-section">
+    <div class="bio-label">Міжнародна діяльність</div>
+    <p class="bio-text">Teatro Verdi (Трієст, 2019–2026), Варшавська філармонія, Concertgebouw (Амстердам). Запрошений диригент Міжнародного конкурсу ім. Р. Ліпіцера та конкурсу ім. М. Скорика. Виступав у Франції, Польщі, Словаччині, Чехії, Угорщині, Німеччині, Іспанії, Португалії, Бельгії, Нідерландах, Норвегії.</p>
+  </div>
+</section>
+
+<!-- ── Panel: Антон Литвинов ── -->
+<section class="tab-panel" id="tab-anton" role="tabpanel">
+  <div class="member-header">
+    <div class="member-photo">
+      <img src="https://opera.lviv.ua/wp-content/uploads/2023/10/DSC_3857-scaled.jpg" alt="Антон Литвинов" />
+    </div>
+    <div class="member-info">
+      <h2 class="member-name">Антон Литвинов</h2>
+      <div class="member-role">Режисер-постановник</div>
+    </div>
+  </div>
+
+  <div class="bio-section">
+    <div class="bio-label">Освіта</div>
+    <p class="bio-text">У 2018 р. закінчив Національну музичну академію України ім. П. І. Чайковського (спеціальність «Музична режисура»). З 2015 р. — співзасновник мистецького об'єднання HRONOTOP.UA.</p>
+  </div>
+
+  <div class="bio-section">
+    <div class="bio-label">Кар'єра</div>
+    <p class="bio-text">2014–2016 — артист-вокаліст, NOVA OPERA. 2016–2018 — технічний директор «Дикого Театру» (Київ). 2018–2019 — режисер-постановник Одеського НАТОіБ. З серпня 2022 р. — режисер-постановник Львівської національної опери.</p>
+  </div>
+
+  <div class="bio-section">
+    <div class="bio-label">Вибрані проєкти</div>
+    <p class="bio-text">«Гармонія сфер» (мультимедійний перформанс, 2023), «Русалонька» Катсамацу (2024), «Катерина» Аркаса — Івано-Франківська філармонія (2024), Реквієм Моцарта — Театр ім. І. Франка (2025), «Марія де Буенос-Айрес» — Театр ім. Леся Курбаса (2026).</p>
+  </div>
+
+  <div class="bio-section">
+    <div class="bio-label">Фестивалі</div>
+    <p class="bio-text">GOGOLFEST 2014–2015, IV фестиваль молодої режисури ім. Леся Курбаса, Międzynarodowe Spotkania Teatrów Tańca (Люблін), British Council «Taking The New» 2017, «Оперний вікенд», «Plan B» 2018.</p>
+  </div>
+</section>
+
+<!-- ── Panel: Романа Думанська ── -->
+<section class="tab-panel" id="tab-romana" role="tabpanel">
+  <div class="member-header">
+    <div class="member-photo">
+      <img src="https://opera.lviv.ua/wp-content/uploads/2023/10/DSC_8491-scaled.jpg" alt="Романа Думанська" />
+    </div>
+    <div class="member-info">
+      <h2 class="member-name">Романа Думанська</h2>
+      <div class="member-role">Хореограф-постановник</div>
+    </div>
+  </div>
+
+  <div class="bio-section">
+    <div class="bio-label">Освіта</div>
+    <p class="bio-text">Випускниця з відзнакою Львівської державної хореографічної школи. Магістр хореографії Дрогобицького державного педагогічного університету ім. І. Франка.</p>
+  </div>
+
+  <div class="bio-section">
+    <div class="bio-label">Артистична діяльність</div>
+    <p class="bio-text">З 2016 р. — артистка балету Львівської національної опери. Партії: Палагна («Тіні забутих предків»), Відьма («Білосніжка»), Килина («Мавка»), варіація Флори («Дон Кіхот») та ін.</p>
+  </div>
+
+  <div class="bio-section">
+    <div class="bio-label">Хореографічна діяльність</div>
+    <p class="bio-text">Хореограф-постановник номеру «Діти війни» (музика В. Польової) на фестивалі «Резиденція класичного танцю ім. Роми Прийми-Богачевської». Дипломантка конкурсів Spoleto та NapoliDOC (Італія).</p>
+  </div>
+
+  <div class="bio-section">
+    <div class="bio-label">Гастролі та нагороди</div>
+    <p class="bio-text">Іспанія, Італія, США, Канада, Тайвань, Саудівська Аравія, Німеччина, Польща, Португалія. Відзначена подякою Львівської міської ради за мистецьку діяльність (2026).</p>
+  </div>
+</section>
+
+<footer>Львів</footer>
+
+<script>
+  const buttons = document.querySelectorAll('.tab-btn');
+  const panels  = document.querySelectorAll('.tab-panel');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
