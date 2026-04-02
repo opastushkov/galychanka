@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Мистецький колектив</title>
+  <title>Мистецький колектив «Галичанка»</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -135,6 +135,18 @@
     .bio-text {
       font-size: .95rem;
       color: #333;
+    }
+
+    .bio-text a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: #bbb;
+      text-underline-offset: 3px;
+      transition: text-decoration-color .15s;
+    }
+
+    .bio-text a:hover {
+      text-decoration-color: #1a1a1a;
     }
 
     @media (max-width: 520px) {
@@ -278,7 +290,7 @@
 <body>
 
 <header>
-  <h1>Мистецький колектив &nbsp;·&nbsp; Львів</h1>
+  <h1>Мистецький колектив &laquo;Галичанка&raquo;</h1>
 </header>
 
 <!-- Tab buttons -->
@@ -313,7 +325,7 @@
 
       <div class="bio-section">
         <div class="bio-label">Оперна та балетна діяльність</div>
-        <p class="bio-text">З 2003 р. — диригент Львівського національного академічного театру опери та балету ім. С. Крушельницької. Постановки: «Дон Жуан», «Весілля Фігаро» Моцарта, «Дон Кіхот» Мінкуса, «Корсар» Адана, «Мавка» Польової та ін.</p>
+        <p class="bio-text">З 2003 р. — диригент Львівського національного академічного театру опери та балету ім. С. Крушельницької. Постановки: <a href="https://opera.lviv.ua/en/shows/v-a-motsart-don-zhuan-kontsertne-vykonannya/" target="_blank" rel="noopener">«Дон Жуан»</a>, «Весілля Фігаро» Моцарта, <a href="https://opera.lviv.ua/en/shows/don-kihot/" target="_blank" rel="noopener">«Дон Кіхот»</a> Мінкуса, <a href="https://opera.lviv.ua/shows/korsar/" target="_blank" rel="noopener">«Корсар»</a> Адана, <a href="https://opera.lviv.ua/en/shows/mavka/" target="_blank" rel="noopener">«Мавка»</a> Польової, <a href="https://opera.lviv.ua/en/shows/tini-zabutyh-predkiv/" target="_blank" rel="noopener">«Тіні забутих предків»</a> Небесного, <a href="https://opera.lviv.ua/shows/rusalonka/" target="_blank" rel="noopener">«Русалонька»</a> Катсамацу (2024) та ін.</p>
       </div>
 
       <div class="bio-section">
@@ -330,17 +342,15 @@
     <div class="magazine-right">
       <div class="slider-track-wrap" id="sliderWrapYuriy">
         <div class="slider-track" id="sliderTrackYuriy">
-          <img src="Harmony_Of_Spheres_1.jpg" alt="Гармонія сфер — сцена 1" />
-          <img src="Harmony_Of_Spheres_2.jpg" alt="Гармонія сфер — сцена 2" />
+          <img src="Mermaid_0.jpg" alt="Русалонька" />
         </div>
         <button class="slider-btn prev" id="sliderPrevYuriy">&#8592;</button>
         <button class="slider-btn next" id="sliderNextYuriy">&#8594;</button>
       </div>
       <div class="slider-dots" id="sliderDotsYuriy">
         <button class="slider-dot active"></button>
-        <button class="slider-dot"></button>
       </div>
-      <div class="bio-label" style="margin-top:.7rem;text-align:center;">«Гармонія сфер» — мультимедійний перформанс, 2023</div>
+      <div class="bio-label" style="margin-top:.7rem;text-align:center;"><a href="https://opera.lviv.ua/shows/rusalonka/" target="_blank" rel="noopener">«Русалонька»</a> Катсамацу — диригент, 2024</div>
     </div>
 
   </div>
@@ -369,7 +379,7 @@
 
       <div class="bio-section">
         <div class="bio-label">Вибрані проєкти</div>
-        <p class="bio-text">«Гармонія сфер» (мультимедійний перформанс, 2023), «Русалонька» Катсамацу (2024), «Катерина» Аркаса — Івано-Франківська філармонія (2024), Реквієм Моцарта — Театр ім. І. Франка (2025), «Марія де Буенос-Айрес» — Театр ім. Леся Курбаса (2026).</p>
+        <p class="bio-text"><a href="https://opera.lviv.ua/shows/garmoniya-sfer/" target="_blank" rel="noopener">«Гармонія сфер»</a> (мультимедійний перформанс, 2023), <a href="https://opera.lviv.ua/shows/rusalonka/" target="_blank" rel="noopener">«Русалонька»</a> Катсамацу (2024), «Катерина» Аркаса — Івано-Франківська філармонія (2024), <a href="https://ft.org.ua/news/rekvijem" target="_blank" rel="noopener">Реквієм Моцарта</a> — Театр ім. І. Франка (2025), <a href="https://www.kurbas.lviv.ua/en/news/Maria-de-Buenos-Aires-premjera/" target="_blank" rel="noopener">«Марія де Буенос-Айрес»</a> — Театр ім. Леся Курбаса (2026).</p>
       </div>
 
       <div class="bio-section">
@@ -382,7 +392,9 @@
       <div class="slider-track-wrap" id="sliderWrap">
         <div class="slider-track" id="sliderTrack">
           <img src="Mermaid_1.jpg" alt="Русалонька — сцена 1" />
+          <img src="Harmony_Of_Spheres_1.jpg" alt="Гармонія сфер — сцена 1" />
           <img src="Mermaid_2.jpg" alt="Русалонька — сцена 2" />
+          <img src="Harmony_Of_Spheres_2.jpg" alt="Гармонія сфер — сцена 2" />
           <img src="Mermaid_3.jpg" alt="Русалонька — сцена 3" />
         </div>
         <button class="slider-btn prev" id="sliderPrev">&#8592;</button>
@@ -392,8 +404,10 @@
         <button class="slider-dot active"></button>
         <button class="slider-dot"></button>
         <button class="slider-dot"></button>
+        <button class="slider-dot"></button>
+        <button class="slider-dot"></button>
       </div>
-      <div class="bio-label" style="margin-top:.7rem;text-align:center;">«Русалонька» Катсамацу — Львівська національна опера, 2024</div>
+      <div class="bio-label" style="margin-top:.7rem;text-align:center;"><a href="https://opera.lviv.ua/shows/rusalonka/" target="_blank" rel="noopener">«Русалонька»</a> · <a href="https://opera.lviv.ua/shows/garmoniya-sfer/" target="_blank" rel="noopener">«Гармонія сфер»</a></div>
     </div>
 
   </div>
@@ -417,7 +431,7 @@
 
       <div class="bio-section">
         <div class="bio-label">Артистична діяльність</div>
-        <p class="bio-text">З 2016 р. — артистка балету Львівської національної опери. Партії: Палагна («Тіні забутих предків»), Відьма («Білосніжка»), Килина («Мавка»), варіація Флори («Дон Кіхот») та ін.</p>
+        <p class="bio-text">З 2016 р. — артистка балету Львівської національної опери. Партії: Палагна (<a href="https://opera.lviv.ua/en/shows/tini-zabutyh-predkiv/" target="_blank" rel="noopener">«Тіні забутих предків»</a>), Відьма («Білосніжка»), Килина (<a href="https://opera.lviv.ua/en/shows/mavka/" target="_blank" rel="noopener">«Мавка»</a>), варіація Флори (<a href="https://opera.lviv.ua/en/shows/don-kihot/" target="_blank" rel="noopener">«Дон Кіхот»</a>) та ін.</p>
       </div>
 
       <div class="bio-section">
