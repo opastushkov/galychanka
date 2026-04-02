@@ -90,8 +90,7 @@
       align-items: flex-start;
       gap: 2rem;
       margin-bottom: 1.8rem;
-      border-top: 2px solid #1a1a1a;
-      padding-top: 2rem;
+      padding-top: 1.4rem;
     }
 
     .member-photo {
@@ -144,16 +143,39 @@
       .member-photo img { aspect-ratio: 4/3; object-position: center 20%; }
     }
 
-    /* ── Slider ── */
-    .production-slider {
-      margin-top: 1.8rem;
-      margin-bottom: .2rem;
+    /* ── Two-column magazine layout ── */
+    .magazine-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 3rem;
+      align-items: start;
+      border-top: 2px solid #1a1a1a;
+      padding-top: 2rem;
     }
 
+    .magazine-right {
+      position: sticky;
+      top: 2rem;
+    }
+
+    .magazine-left .member-photo {
+      width: 120px;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 620px) {
+      .magazine-layout {
+        grid-template-columns: 1fr;
+      }
+      .magazine-right {
+        position: static;
+      }
+    }
+
+    /* ── Slider ── */
     .slider-track-wrap {
       position: relative;
       overflow: hidden;
-      margin-top: .75rem;
     }
 
     .slider-track {
@@ -164,7 +186,7 @@
     .slider-track img {
       flex: 0 0 100%;
       width: 100%;
-      aspect-ratio: 16/9;
+      aspect-ratio: 4/5;
       object-fit: cover;
       display: block;
       cursor: pointer;
@@ -268,7 +290,7 @@
 
 <!-- ── Panel: Юрій Бервецький ── -->
 <section class="tab-panel active" id="tab-yuriy" role="tabpanel">
-  <div class="member-header">
+  <div class="member-header" style="border-top:2px solid #1a1a1a;padding-top:2rem;">
     <div class="member-photo">
       <img src="https://opera.lviv.ua/wp-content/uploads/2020/08/IVA_2211-681x1024.jpg" alt="Юрій Бервецький" />
     </div>
@@ -306,58 +328,60 @@
 
 <!-- ── Panel: Антон Литвинов ── -->
 <section class="tab-panel" id="tab-anton" role="tabpanel">
-  <div class="member-header">
-    <div class="member-photo">
-      <img src="https://opera.lviv.ua/wp-content/uploads/2023/10/DSC_3857-scaled.jpg" alt="Антон Литвинов" />
-    </div>
-    <div class="member-info">
+  <div class="magazine-layout">
+
+    <div class="magazine-left">
+      <div class="member-photo">
+        <img src="anton.jpg" alt="Антон Литвинов" />
+      </div>
       <h2 class="member-name">Антон Литвинов</h2>
       <div class="member-role">Режисер-постановник</div>
-    </div>
-  </div>
 
-  <div class="production-slider">
-    <div class="bio-label">Ілюстрації — «Русалонька» (2024)</div>
-    <div class="slider-track-wrap" id="sliderWrap">
-      <div class="slider-track" id="sliderTrack">
-        <img src="Mermaid_1.jpg" alt="Русалонька — сцена 1" />
-        <img src="Mermaid_2.jpg" alt="Русалонька — сцена 2" />
-        <img src="Mermaid_3.jpg" alt="Русалонька — сцена 3" />
+      <div class="bio-section">
+        <div class="bio-label">Освіта</div>
+        <p class="bio-text">У 2018 р. закінчив Національну музичну академію України ім. П. І. Чайковського (спеціальність «Музична режисура»). З 2015 р. — співзасновник мистецького об'єднання HRONOTOP.UA.</p>
       </div>
-      <button class="slider-btn prev" id="sliderPrev">&#8592;</button>
-      <button class="slider-btn next" id="sliderNext">&#8594;</button>
+
+      <div class="bio-section">
+        <div class="bio-label">Кар'єра</div>
+        <p class="bio-text">2014–2016 — артист-вокаліст, NOVA OPERA. 2016–2018 — технічний директор «Дикого Театру» (Київ). 2018–2019 — режисер-постановник Одеського НАТОіБ. З серпня 2022 р. — режисер-постановник Львівської національної опери.</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Вибрані проєкти</div>
+        <p class="bio-text">«Гармонія сфер» (мультимедійний перформанс, 2023), «Русалонька» Катсамацу (2024), «Катерина» Аркаса — Івано-Франківська філармонія (2024), Реквієм Моцарта — Театр ім. І. Франка (2025), «Марія де Буенос-Айрес» — Театр ім. Леся Курбаса (2026).</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Фестивалі</div>
+        <p class="bio-text">GOGOLFEST 2014–2015, IV фестиваль молодої режисури ім. Леся Курбаса, Międzynarodowe Spotkania Teatrów Tańca (Люблін), British Council «Taking The New» 2017, «Оперний вікенд», «Plan B» 2018.</p>
+      </div>
     </div>
-    <div class="slider-dots" id="sliderDots">
-      <button class="slider-dot active"></button>
-      <button class="slider-dot"></button>
-      <button class="slider-dot"></button>
+
+    <div class="magazine-right">
+      <div class="slider-track-wrap" id="sliderWrap">
+        <div class="slider-track" id="sliderTrack">
+          <img src="Mermaid_1.jpg" alt="Русалонька — сцена 1" />
+          <img src="Mermaid_2.jpg" alt="Русалонька — сцена 2" />
+          <img src="Mermaid_3.jpg" alt="Русалонька — сцена 3" />
+        </div>
+        <button class="slider-btn prev" id="sliderPrev">&#8592;</button>
+        <button class="slider-btn next" id="sliderNext">&#8594;</button>
+      </div>
+      <div class="slider-dots" id="sliderDots">
+        <button class="slider-dot active"></button>
+        <button class="slider-dot"></button>
+        <button class="slider-dot"></button>
+      </div>
+      <div class="bio-label" style="margin-top:.7rem;text-align:center;">«Русалонька» Катсамацу — Львівська національна опера, 2024</div>
     </div>
-  </div>
 
-  <div class="bio-section">
-    <div class="bio-label">Освіта</div>
-    <p class="bio-text">У 2018 р. закінчив Національну музичну академію України ім. П. І. Чайковського (спеціальність «Музична режисура»). З 2015 р. — співзасновник мистецького об'єднання HRONOTOP.UA.</p>
-  </div>
-
-  <div class="bio-section">
-    <div class="bio-label">Кар'єра</div>
-    <p class="bio-text">2014–2016 — артист-вокаліст, NOVA OPERA. 2016–2018 — технічний директор «Дикого Театру» (Київ). 2018–2019 — режисер-постановник Одеського НАТОіБ. З серпня 2022 р. — режисер-постановник Львівської національної опери.</p>
-  </div>
-
-  <div class="bio-section">
-    <div class="bio-label">Вибрані проєкти</div>
-    <p class="bio-text">«Гармонія сфер» (мультимедійний перформанс, 2023), «Русалонька» Катсамацу (2024), «Катерина» Аркаса — Івано-Франківська філармонія (2024), Реквієм Моцарта — Театр ім. І. Франка (2025), «Марія де Буенос-Айрес» — Театр ім. Леся Курбаса (2026).</p>
-  </div>
-
-  <div class="bio-section">
-    <div class="bio-label">Фестивалі</div>
-    <p class="bio-text">GOGOLFEST 2014–2015, IV фестиваль молодої режисури ім. Леся Курбаса, Międzynarodowe Spotkania Teatrów Tańca (Люблін), British Council «Taking The New» 2017, «Оперний вікенд», «Plan B» 2018.</p>
   </div>
 </section>
 
 <!-- ── Panel: Романа Думанська ── -->
 <section class="tab-panel" id="tab-romana" role="tabpanel">
-  <div class="member-header">
+  <div class="member-header" style="border-top:2px solid #1a1a1a;padding-top:2rem;">
     <div class="member-photo">
       <img src="https://opera.lviv.ua/wp-content/uploads/2023/10/DSC_8491-scaled.jpg" alt="Романа Думанська" />
     </div>
