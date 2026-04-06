@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Учасники — Галичанка</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f7f4f0;
+      --ink:     #0c0c0c;
+      --muted:   #8a8480;
+      --rule:    #d5d0ca;
+      --display: 'Cormorant Garamond', Georgia, serif;
+      --sans:    'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      font-family: var(--display);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 56px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .topbar-back {
+      font-family: var(--sans);
+      font-size: .68rem;
+      font-weight: 400;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .topbar-back:hover { color: var(--ink); }
+
+    .topbar-brand {
+      font-family: var(--sans);
+      font-size: .68rem;
+      font-weight: 400;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    /* ── Page heading ── */
+    .page-heading {
+      text-align: center;
+      padding: 4.5rem 2rem 3.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .page-heading h1 {
+      font-family: var(--display);
+      font-weight: 300;
+      font-size: clamp(1.6rem, 4vw, 3rem);
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .page-heading .subtitle {
+      margin-top: .9rem;
+      font-family: var(--sans);
+      font-size: .62rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Tabs ── */
+    .tabs-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 3rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .tabs-wrapper::-webkit-scrollbar { display: none; }
+
+    .tab-list {
+      display: flex;
+      list-style: none;
+      min-width: max-content;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 1px solid transparent;
+      margin-bottom: -1px;
+      padding: 1.4rem 2rem 1.3rem;
+      font-family: var(--sans);
+      font-size: .63rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .2s;
+    }
+
+    .tab-btn:hover { color: var(--ink); }
+
+    .tab-btn.active {
+      color: var(--ink);
+      border-bottom-color: var(--ink);
+    }
+
+    /* ── Panels ── */
+    .tab-panel {
+      display: none;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4rem 3rem 6rem;
+    }
+
+    .tab-panel.active { display: block; }
+
+    .tab-panel.active { animation: fadein .3s ease; }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* ── Magazine layout ── */
+    .magazine-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .magazine-right {
+      position: sticky;
+      top: 2rem;
+    }
+
+    /* ── Left column ── */
+    .member-photo {
+      width: 100%;
+      margin-bottom: 1.6rem;
+    }
+
+    .member-photo img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      filter: grayscale(100%);
+    }
+
+    .member-name {
+      font-family: var(--display);
+      font-weight: 300;
+      font-size: 2rem;
+      letter-spacing: .04em;
+      line-height: 1.1;
+    }
+
+    .member-role {
+      margin-top: .5rem;
+      font-family: var(--sans);
+      font-size: .6rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .bio-section {
+      margin-top: 2rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .bio-label {
+      font-family: var(--sans);
+      font-size: .58rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .6rem;
+    }
+
+    .bio-text {
+      font-family: var(--display);
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--ink);
+    }
+
+    .bio-text a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: var(--rule);
+      text-underline-offset: 3px;
+      transition: text-decoration-color .15s;
+    }
+
+    .bio-text a:hover { text-decoration-color: var(--ink); }
+
+    /* ── Slider ── */
+    .slider-track-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform .4s cubic-bezier(.4,0,.2,1);
+    }
+
+    .slider-track img,
+    .slider-track video {
+      flex: 0 0 100%;
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slider-track img { cursor: pointer; }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(247,244,240,.85);
+      border: none;
+      width: 2.2rem;
+      height: 2.2rem;
+      font-size: .8rem;
+      font-family: var(--sans);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+      transition: background .15s;
+    }
+
+    .slider-btn:hover { background: var(--bg); }
+    .slider-btn.prev  { left: 0; }
+    .slider-btn.next  { right: 0; }
+
+    .slider-meta {
+      margin-top: .9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .slider-caption {
+      font-family: var(--sans);
+      font-size: .58rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .slider-caption a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: var(--rule);
+      text-underline-offset: 3px;
+      transition: text-decoration-color .15s;
+    }
+
+    .slider-caption a:hover { text-decoration-color: var(--muted); }
+
+    .slider-dots {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+    }
+
+    .slider-dot {
+      width: 16px;
+      height: 1px;
+      background: var(--rule);
+      border: none;
+      cursor: pointer;
+      padding: 4px 0;
+      background-clip: content-box;
+      transition: background .2s;
+    }
+
+    .slider-dot.active { background: var(--ink); background-clip: content-box; }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(12,12,12,.94);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      color: rgba(247,244,240,.5);
+      font-family: var(--sans);
+      font-size: 1rem;
+      letter-spacing: .1em;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: .4rem;
+      transition: color .15s;
+    }
+
+    .lightbox-close:hover { color: var(--bg); }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 1.8rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    footer span {
+      font-family: var(--sans);
+      font-size: .62rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ════════ Responsive ════════ */
+
+    @media (max-width: 720px) {
+      .magazine-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar { padding: 0 1.4rem; }
+
+      .page-heading { padding: 3rem 1.4rem 2.5rem; }
+
+      .tabs-wrapper { padding: 0 1.4rem; }
+
+      .tab-btn {
+        padding: 1.2rem 1.2rem 1.1rem;
+        font-size: .58rem;
+        letter-spacing: .12em;
+      }
+
+      .tab-panel { padding: 2.5rem 1.4rem 4rem; }
+
+      .magazine-layout {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .magazine-right {
+        position: static;
+        order: -1;
+        margin-bottom: 2rem;
+      }
+
+      .slider-track img,
+      .slider-track video { aspect-ratio: 4/3; }
+
+      /* Compact portrait + header side-by-side */
+      .magazine-left {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        column-gap: 1rem;
+      }
+
+      .member-photo {
+        grid-column: 1;
+        grid-row: 1 / 3;
+        margin-bottom: 0;
+      }
+
+      .member-photo img { aspect-ratio: 3/4; }
+
+      .member-name {
+        grid-column: 2;
+        grid-row: 1;
+        font-size: 1.5rem;
+        align-self: end;
+      }
+
+      .member-role {
+        grid-column: 2;
+        grid-row: 2;
+        align-self: start;
+      }
+
+      .bio-section { grid-column: 1 / -1; }
+
+      footer { padding: 1.6rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a class="topbar-back" href="index.html">&larr; Галичанка</a>
+  <span class="topbar-brand">Учасники</span>
+</nav>
+
+<div class="page-heading">
+  <h1>Мистецький колектив</h1>
+  <p class="subtitle">Галичанка</p>
+</div>
+
+<!-- Tab buttons -->
+<div class="tabs-wrapper">
+  <ul class="tab-list" role="tablist">
+    <li><button class="tab-btn active" role="tab" data-tab="yuriy">Юрій Бервецький</button></li>
+    <li><button class="tab-btn"        role="tab" data-tab="anton">Антон Литвинов</button></li>
+    <li><button class="tab-btn"        role="tab" data-tab="romana">Романа Думанська</button></li>
+  </ul>
+</div>
+
+<!-- ── Panel: Юрій Бервецький ── -->
+<section class="tab-panel active" id="tab-yuriy" role="tabpanel">
+  <div class="magazine-layout">
+
+    <div class="magazine-left">
+      <div class="member-photo">
+        <img src="yuriy.jpg" alt="Юрій Бервецький" />
+      </div>
+      <h2 class="member-name">Юрій Бервецький</h2>
+      <div class="member-role">Музичний керівник та диригент</div>
+
+      <div class="bio-section">
+        <div class="bio-label">Нагороди</div>
+        <p class="bio-text">Заслужений артист України (2017). Грамота Верховної Ради України (2020). Медаль Міністерства культури України (2014).</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Освіта</div>
+        <p class="bio-text">Брав приватні уроки у Миколи Колесси та Іллі Мусіна — видатних представників радянської та української диригентської школи.</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Оперна та балетна діяльність</div>
+        <p class="bio-text">З 2003 р. — диригент Львівського національного академічного театру опери та балету ім. С. Крушельницької. Постановки: <a href="https://opera.lviv.ua/en/shows/v-a-motsart-don-zhuan-kontsertne-vykonannya/" target="_blank" rel="noopener">«Дон Жуан»</a>, «Весілля Фігаро» Моцарта, <a href="https://opera.lviv.ua/en/shows/don-kihot/" target="_blank" rel="noopener">«Дон Кіхот»</a> Мінкуса, <a href="https://opera.lviv.ua/shows/korsar/" target="_blank" rel="noopener">«Корсар»</a> Адана, <a href="https://opera.lviv.ua/en/shows/mavka/" target="_blank" rel="noopener">«Мавка»</a> Польової, <a href="https://opera.lviv.ua/en/shows/tini-zabutyh-predkiv/" target="_blank" rel="noopener">«Тіні забутих предків»</a> Небесного, <a href="https://opera.lviv.ua/shows/rusalonka/" target="_blank" rel="noopener">«Русалонька»</a> Катсамацу (2024) та ін.</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Педагогічна діяльність</div>
+        <p class="bio-text">З 2005 р. — завідувач кафедри оперної підготовки та головний диригент Оперної студії Львівської національної музичної академії ім. М. Лисенка. Виконано всі скрипкові концерти М. Скорика.</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Міжнародна діяльність</div>
+        <p class="bio-text">Teatro Verdi (Трієст, 2019–2026), Варшавська філармонія, Concertgebouw (Амстердам). Запрошений диригент Міжнародного конкурсу ім. Р. Ліпіцера та конкурсу ім. М. Скорика. Виступав у Франції, Польщі, Словаччині, Чехії, Угорщині, Німеччині, Іспанії, Португалії, Бельгії, Нідерландах, Норвегії.</p>
+      </div>
+    </div>
+
+    <div class="magazine-right">
+      <div class="slider-track-wrap" id="sliderWrapYuriy">
+        <div class="slider-track" id="sliderTrackYuriy">
+          <img src="Mermaid_0.jpg" alt="Русалонька" />
+        </div>
+        <button class="slider-btn prev" id="sliderPrevYuriy">&#8592;</button>
+        <button class="slider-btn next" id="sliderNextYuriy">&#8594;</button>
+      </div>
+      <div class="slider-meta">
+        <div class="slider-caption"><a href="https://opera.lviv.ua/shows/rusalonka/" target="_blank" rel="noopener">«Русалонька»</a> Катсамацу — диригент, 2024</div>
+        <div class="slider-dots" id="sliderDotsYuriy">
+          <button class="slider-dot active"></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Panel: Антон Литвинов ── -->
+<section class="tab-panel" id="tab-anton" role="tabpanel">
+  <div class="magazine-layout">
+
+    <div class="magazine-left">
+      <div class="member-photo">
+        <img src="anton.jpg" alt="Антон Литвинов" />
+      </div>
+      <h2 class="member-name">Антон Литвинов</h2>
+      <div class="member-role">Режисер-постановник</div>
+
+      <div class="bio-section">
+        <div class="bio-label">Освіта</div>
+        <p class="bio-text">У 2018 р. закінчив Національну музичну академію України ім. П. І. Чайковського (спеціальність «Музична режисура»). З 2015 р. — співзасновник мистецького об'єднання HRONOTOP.UA.</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Кар'єра</div>
+        <p class="bio-text">2014–2016 — артист-вокаліст, NOVA OPERA. 2016–2018 — технічний директор «Дикого Театру» (Київ). 2018–2019 — режисер-постановник Одеського НАТОіБ. З серпня 2022 р. — режисер-постановник Львівської національної опери.</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Вибрані проєкти</div>
+        <p class="bio-text"><a href="https://opera.lviv.ua/shows/garmoniya-sfer/" target="_blank" rel="noopener">«Гармонія сфер»</a> (мультимедійний перформанс, 2023), <a href="https://opera.lviv.ua/shows/rusalonka/" target="_blank" rel="noopener">«Русалонька»</a> Катсамацу (2024), «Катерина» Аркаса — Івано-Франківська філармонія (2024), <a href="https://ft.org.ua/news/rekvijem" target="_blank" rel="noopener">Реквієм Моцарта</a> — Театр ім. І. Франка (2025), <a href="https://www.kurbas.lviv.ua/en/news/Maria-de-Buenos-Aires-premjera/" target="_blank" rel="noopener">«Марія де Буенос-Айрес»</a> — Театр ім. Леся Курбаса (2026).</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Фестивалі</div>
+        <p class="bio-text">GOGOLFEST 2014–2015, IV фестиваль молодої режисури ім. Леся Курбаса, Międzynarodowe Spotkania Teatrów Tańca (Люблін), British Council «Taking The New» 2017, «Оперний вікенд», «Plan B» 2018.</p>
+      </div>
+    </div>
+
+    <div class="magazine-right">
+      <div class="slider-track-wrap" id="sliderWrap">
+        <div class="slider-track" id="sliderTrack">
+          <img src="Mermaid_1.jpg" alt="Русалонька — сцена 1" />
+          <img src="Harmony_Of_Spheres_1.jpg" alt="Гармонія сфер — сцена 1" />
+          <img src="Mermaid_2.jpg" alt="Русалонька — сцена 2" />
+          <img src="Harmony_Of_Spheres_2.jpg" alt="Гармонія сфер — сцена 2" />
+          <img src="Mermaid_3.jpg" alt="Русалонька — сцена 3" />
+        </div>
+        <button class="slider-btn prev" id="sliderPrev">&#8592;</button>
+        <button class="slider-btn next" id="sliderNext">&#8594;</button>
+      </div>
+      <div class="slider-meta">
+        <div class="slider-caption">
+          <a href="https://opera.lviv.ua/shows/rusalonka/" target="_blank" rel="noopener">«Русалонька»</a>
+          &nbsp;&middot;&nbsp;
+          <a href="https://opera.lviv.ua/shows/garmoniya-sfer/" target="_blank" rel="noopener">«Гармонія сфер»</a>
+        </div>
+        <div class="slider-dots" id="sliderDots">
+          <button class="slider-dot active"></button>
+          <button class="slider-dot"></button>
+          <button class="slider-dot"></button>
+          <button class="slider-dot"></button>
+          <button class="slider-dot"></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Panel: Романа Думанська ── -->
+<section class="tab-panel" id="tab-romana" role="tabpanel">
+  <div class="magazine-layout">
+
+    <div class="magazine-left">
+      <div class="member-photo">
+        <img src="romana.jpg" alt="Романа Думанська" />
+      </div>
+      <h2 class="member-name">Романа Думанська</h2>
+      <div class="member-role">Хореограф-постановник</div>
+
+      <div class="bio-section">
+        <div class="bio-label">Освіта</div>
+        <p class="bio-text">Випускниця з відзнакою Львівської державної хореографічної школи. Магістр хореографії Дрогобицького державного педагогічного університету ім. І. Франка.</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Артистична діяльність</div>
+        <p class="bio-text">З 2016 р. — артистка балету Львівської національної опери. Партії: Палагна (<a href="https://opera.lviv.ua/en/shows/tini-zabutyh-predkiv/" target="_blank" rel="noopener">«Тіні забутих предків»</a>), Відьма («Білосніжка»), Килина (<a href="https://opera.lviv.ua/en/shows/mavka/" target="_blank" rel="noopener">«Мавка»</a>), варіація Флори (<a href="https://opera.lviv.ua/en/shows/don-kihot/" target="_blank" rel="noopener">«Дон Кіхот»</a>) та ін.</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Хореографічна діяльність</div>
+        <p class="bio-text">Хореограф-постановник номеру «Діти війни» (музика В. Польової) на фестивалі «Резиденція класичного танцю ім. Роми Прийми-Богачевської». Дипломантка конкурсів Spoleto та NapoliDOC (Італія).</p>
+      </div>
+
+      <div class="bio-section">
+        <div class="bio-label">Гастролі та нагороди</div>
+        <p class="bio-text">Іспанія, Італія, США, Канада, Тайвань, Саудівська Аравія, Німеччина, Польща, Португалія. Відзначена подякою Львівської міської ради за мистецьку діяльність (2026).</p>
+      </div>
+    </div>
+
+    <div class="magazine-right">
+      <div class="slider-track-wrap" id="sliderTrackWrapRomana">
+        <div class="slider-track" id="sliderTrackRomana">
+          <video controls>
+            <source src="Children_Of_War_compressed.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <button class="slider-btn prev" id="sliderPrevRomana">&#8592;</button>
+        <button class="slider-btn next" id="sliderNextRomana">&#8594;</button>
+      </div>
+      <div class="slider-meta">
+        <div class="slider-caption">«Діти війни»</div>
+        <div class="slider-dots" id="sliderDotsRomana">
+          <button class="slider-dot active"></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close">Закрити</button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<footer>
+  <span>Львів</span>
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll('.tab-btn');
+  const panels  = document.querySelectorAll('.tab-panel');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Lightbox
+  const lightbox    = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  document.getElementById('lightbox-close').addEventListener('click', () => lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
+
+  function initSlider(trackId, prevId, nextId, dotsContainerId) {
+    const track  = document.getElementById(trackId);
+    const slides = Array.from(track.querySelectorAll('img, video'));
+    const dots   = Array.from(document.getElementById(dotsContainerId).querySelectorAll('.slider-dot'));
+    let current  = 0;
+
+    function goTo(n) {
+      const leaving = slides[current];
+      if (leaving && leaving.tagName === 'VIDEO') leaving.pause();
+      current = (n + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    document.getElementById(prevId).addEventListener('click', () => goTo(current - 1));
+    document.getElementById(nextId).addEventListener('click', () => goTo(current + 1));
+    dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+
+    slides.forEach(img => {
+      if (img.tagName === 'IMG') {
+        img.addEventListener('click', () => {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightbox.classList.add('open');
+        });
+      }
+    });
+  }
+
+  initSlider('sliderTrack',       'sliderPrev',       'sliderNext',       'sliderDots');
+  initSlider('sliderTrackYuriy',  'sliderPrevYuriy',  'sliderNextYuriy',  'sliderDotsYuriy');
+  initSlider('sliderTrackRomana', 'sliderPrevRomana', 'sliderNextRomana', 'sliderDotsRomana');
+</script>
+
+</body>
+</html>
